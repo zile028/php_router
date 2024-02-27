@@ -1,0 +1,40 @@
+<?php
+
+namespace Core;
+
+use PDO;
+
+class Database
+{
+    public $pdo;
+    private $statment;
+
+    public function __construct($config, $username = "root", $password = "")
+    {
+        $dsn = "mysql:" . http_build_query($config, "", ";");
+        try {
+            $this->pdo = new PDO($dsn, $username, $password, [
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]);
+        } catch (PDOException $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    public function query($query, $params = [])
+    {
+        $this->statment = $this->pdo->prepare($query);
+        $this->statment->execute($params);
+        return $this;
+    }
+
+    public function find()
+    {
+        return $this->statment->fetchAll();
+    }
+
+    public function findOne()
+    {
+        return $this->statment->fetch();
+    }
+}

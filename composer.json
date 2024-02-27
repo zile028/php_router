@@ -1,0 +1,17 @@
+{
+    "name": "dejan/php_router",
+    "require": {
+        "twbs/bootstrap": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dejan\\PhpRouter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "zile028",
+            "email": "zile028@gmail.com"
+        }
+    ]
+}
