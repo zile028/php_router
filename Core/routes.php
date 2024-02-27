@@ -21,4 +21,3 @@ $router->get("/about", "controllers/about.php");
 $router->post("/notes/create", "controllers/notes/create.php");
 
 
-dd($router);

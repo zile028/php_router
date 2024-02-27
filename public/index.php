@@ -1,5 +1,9 @@
 <?php
+
+use Core\Router;
+
 const BASE_PATH = __DIR__ . "/../";
+
 require_once(__DIR__ . "/../core/functions.php");
 
 spl_autoload_register(static function ($class) {
@@ -8,4 +12,7 @@ spl_autoload_register(static function ($class) {
     require base_path("$class.php");
 });
 
-require base_path("core/router.php");
+//require base_path("core/router.php");
+
+$router = new Router();
+

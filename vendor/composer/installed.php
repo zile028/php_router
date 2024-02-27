@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'dejan/php_router',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '4fd34509e0a6628662a4b7675acdb82620fd5b38',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'dejan/php_router' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '4fd34509e0a6628662a4b7675acdb82620fd5b38',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

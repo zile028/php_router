@@ -22,10 +22,17 @@ class Router
             "method" => "POST"
         ];
     }
+
+    public function route($uri){
+        if (array_key_exists($uri["path"], $this->routes)) {
+            require_once BASE_PATH . $this->routes[$uri["path"]];
+        } else {
+            abort();
+        }
+    }
 }
 
 
-$uri = parse_url($_SERVER["REQUEST_URI"]);
 
 runController($uri, require "routes.php");
 
