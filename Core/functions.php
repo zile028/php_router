@@ -1,6 +1,8 @@
 <?php
 
-function dd($arg)
+use Core\Response;
+
+function dd($arg): void
 {
     echo "<pre>";
     var_dump($arg);
@@ -8,20 +10,26 @@ function dd($arg)
     die();
 }
 
-function authorize($condition, $status)
+function authorize($condition, $status = Response::FORBIDDEN): void
 {
     if (!$condition) {
         abort($status);
     }
 }
 
-function base_path($path)
+function base_path($path): string
 {
     return BASE_PATH . $path;
 }
 
-function view($view, $params = [])
+function view($view, $params = []): void
 {
     extract($params);
-    require BASE_PATH . "views/$view";
+    require base_path("views/$view");
+}
+
+function abort($statusCode = Response::NOT_FOUND): void
+{
+    view("$statusCode.view.php", ["heading" => "Error"]);
+    die();
 }
