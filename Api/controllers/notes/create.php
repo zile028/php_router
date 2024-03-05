@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return;
     }
 
-    $db->query("INSERT INTO notes (body,user_id) VALUES (:body, :user_id)", ["body" => $body, "user_id" => 1]);
+    $db->query("INSERT INTO notes (body,user_id) VALUES (:body, :user_id)", ["body" => $body, "user_id" => getUser("id")]);
     header("Location: /notes");
     die();
 }

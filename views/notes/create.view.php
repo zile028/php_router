@@ -1,5 +1,5 @@
-<?php view("partials/head.php"); ?>
-<?php view("partials/banner.php", ["heading" => $heading]); ?>
+<?php require base_path("views/partials/head.php") ?>
+<?php require base_path("views/partials/banner.php") ?>
 <div class="container-fluid py-3">
     <div class="container">
         <p>Create Note</p>
@@ -17,4 +17,4 @@
 
 </div>
 
-<?php view("partials/bottom.php"); ?>
+<?php require base_path("views/partials/bottom.php"); ?>

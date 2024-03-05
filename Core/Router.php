@@ -1,62 +1,79 @@
 <?php
 
 namespace Core;
+
+use Core\Middleware\Middleware;
+
 class Router
 {
     private array $routes = [];
 
-    public function add($method, $uri, $controller): void
+    public function add($method, $uri, $controller)
     {
 //      $this->routes = compact($method, $uri, $controller); // suprotno od exrtract, extract radi destrukciju
         $this->routes[] = [
             "uri" => $uri,
             "controller" => $controller,
-            "method" => $method
+            "method" => $method,
+            "middleware" => null
         ];
+        return $this;
     }
 
-    public function get($uri, $controller): void
+    public function get($uri, $controller)
     {
-        $this->add("GET", $uri, $controller);
+        return $this->add("GET", $uri, $controller);
     }
 
-    public function post($uri, $controller): void
+    public function post($uri, $controller)
     {
-        $this->add("POST", $uri, $controller);
+        return $this->add("POST", $uri, $controller);
 
     }
 
-    public function delete(string $uri, string $controller): void
+    public function delete(string $uri, string $controller)
     {
-        $this->add("DELETE", $uri, $controller);
+        return $this->add("DELETE", $uri, $controller);
 
     }
 
-    public function put(string $uri, string $controller): void
+    public function put(string $uri, string $controller)
     {
-        $this->add("PUT", $uri, $controller);
+        return $this->add("PUT", $uri, $controller);
 
     }
 
-    public function patch(string $uri, string $controller): void
+    public function patch(string $uri, string $controller)
     {
-        $this->add("PATCH", $uri, $controller);
+        return $this->add("PATCH", $uri, $controller);
     }
 
+    public function previusUrl()
+    {
+        return $_SERVER["HTTP_REFERER"];
+    }
 
-    public function route($uri, $method): void
+    public function route($uri, $method)
     {
         $method = strtoupper($method);
         foreach ($this->routes as $route) {
             if ($route["uri"] === $uri["path"] && $route["method"] === $method) {
-                require_once BASE_PATH . $route["controller"];
+                Middleware::resolve($route["middleware"]);
+                require_once BASE_PATH . "Api/" . $route["controller"];
                 exit();
             }
         }
         $this->abort();
     }
 
-    public function abort($statusCode = Response::NOT_FOUND): void
+    public function only($key)
+    {
+        $this->routes[array_key_last($this->routes)]["middleware"] = $key;
+        return $this;
+    }
+
+
+    public function abort($statusCode = Response::NOT_FOUND)
     {
         view("$statusCode.view.php");
         die();

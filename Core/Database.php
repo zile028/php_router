@@ -8,6 +8,7 @@ class Database
 {
     public $pdo;
     private $statment;
+    private bool $executeResult;
 
     public function __construct($config, $username = "root", $password = "")
     {
@@ -24,7 +25,7 @@ class Database
     public function query($query, $params = [])
     {
         $this->statment = $this->pdo->prepare($query);
-        $this->statment->execute($params);
+        $this->executeResult = $this->statment->execute($params);
         return $this;
     }
 
@@ -36,5 +37,26 @@ class Database
     public function findOne()
     {
         return $this->statment->fetch();
+    }
+
+    public function findOneOrFail()
+    {
+        $result = $this->findOne();
+        if (!$result) {
+            abort();
+        }
+        return $result;
+    }
+
+    public function deleteOrFail()
+    {
+        $result = (bool)$this->statment->rowCount();
+        if (!$this->executeResult) {
+            abort(Response::SERVER_ERROR);
+        } elseif (!$result) {
+            abort(Response::FORBIDDEN);
+        }
+
+        return $result;
     }
 }
