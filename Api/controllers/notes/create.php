@@ -9,7 +9,7 @@ $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     extract($_POST);
-    if (!Validator::string($body, 1, 100)) {
+    if (!Validator::string($body, 1, 1000)) {
         $errors["body"] = "A body of no more than 1,000 characters is required.";
     }
 

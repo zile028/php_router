@@ -6,11 +6,20 @@
       "email": "zile028@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+  },
   "autoload": {
     "psr-4": {
       "Core\\": "Core/",
       "Api\\": "Api/"
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^2.34"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
     }
   }
 }

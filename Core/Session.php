@@ -6,6 +6,11 @@ class Session
 {
     private const FLASH = "_flash";
 
+    public static function currentUser($key = null)
+    {
+        return $key ? self::get("user")[$key] : self::get("user");
+    }
+
     public static function put($key, $value)
     {
         $_SESSION[$key] = $value;
