@@ -6,5 +6,11 @@
       "email": "zile028@gmail.com"
     }
   ],
-  "require": {}
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core/",
+      "Api\\": "Api/"
+    }
+  }
 }
