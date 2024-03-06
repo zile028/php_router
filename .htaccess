@@ -1,0 +1,37 @@
+
+#RewriteEngine On
+#RewriteBase /
+#
+## Redirect all requests to index.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+#<Files "*">
+#    Deny from all
+#
+#</Files>
+
+# Allow access to specific files
+#<Files "index.php">
+#    Allow from all
+#</Files>
+
+# Redirect to index.php when accessing denied files
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} -f
+#RewriteRule .* index.php [L]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /php_router/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.php [L]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+# Route requests to index.php for further processing
+#RewriteBase /php_router/
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

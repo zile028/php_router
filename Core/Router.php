@@ -12,7 +12,7 @@ class Router
     {
 //      $this->routes = compact($method, $uri, $controller); // suprotno od exrtract, extract radi destrukciju
         $this->routes[] = [
-            "uri" => $uri,
+            "uri" => "/php_router" . $uri,
             "controller" => $controller,
             "method" => $method,
             "middleware" => null
@@ -75,7 +75,7 @@ class Router
 
     public function abort($statusCode = Response::NOT_FOUND)
     {
-        view("$statusCode.view.php");
+        view("$statusCode.view.php", ["heading" => "Error"]);
         die();
     }
 

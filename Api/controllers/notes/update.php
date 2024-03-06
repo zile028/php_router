@@ -23,7 +23,7 @@ if (!empty($errors)) {
 }
 
 $db->query("UPDATE notes SET body = :body WHERE id = :id", ["body" => $_POST["body"], "id" => $_GET["id"]]);
-header("Location: /notes");
+redirect("./notes");
 die();
 
 

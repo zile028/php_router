@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $db->query("INSERT INTO notes (body,user_id) VALUES (:body, :user_id)", ["body" => $body, "user_id" => getUser("id")]);
-    header("Location: /notes");
+    redirect("./notes");
     die();
 }
 view("notes/create.view.php", ["heading" => "Create Note"]);

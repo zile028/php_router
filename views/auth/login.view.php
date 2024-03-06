@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <form action="/login" method="post"
+                <form action="<?php base_path("/login") ?>" method="post"
                       class="bg-dark bg-opacity-50 p-3 my-5 rounded-2">
                     <div class="d-flex flex-column gap-2">
                         <label for="email">Enter your email:</label>
@@ -24,7 +24,8 @@
                     </div>
                     <div class="d-flex justify-content-between gap-3">
                         <button class="btn btn-dark form-control col" type="submit">Login</button>
-                        <a href="/register" class="btn btn-warning col">Register</a>
+                        <a href="<?php base_path("/register") ?>" class="btn btn-warning
+                        col">Register</a>
                     </div>
                     <?php if (isset($errors["login"])): ?>
                         <p class="text-danger lh-1 m-0"><?php echo $errors["login"]; ?></p>

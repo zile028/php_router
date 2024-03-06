@@ -3,6 +3,6 @@
 
 <div class="container-fluid py-3">
     <p>Error 404: Page not found.</p>
-    <a href="/" class="btn btn-warning">Go to Home page</a>
+    <a href="./" class="btn btn-warning">Go to Home page</a>
 </div>
 <?php require base_path("views/partials/bottom.php") ?>

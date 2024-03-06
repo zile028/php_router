@@ -7,7 +7,7 @@
         <p>
             <?php echo $note["body"]; ?>
         </p>
-        <a class="btn btn-warning" href="/notes">Go back</a>
+        <a class="btn btn-warning" href="./notes">Go back</a>
     </div>
 
 </div>

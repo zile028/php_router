@@ -12,5 +12,5 @@ $db = App::resolve(Core\Database::class);
 
 $note = $db->query("DELETE FROM notes WHERE id = :id AND user_id = :userId;", ["id" =>
     $_GET["id"], "userId" => getUser("id")])->deleteOrFail();
-header("Location: /notes");
+redirect("./notes");
 //view("notes/show.view.php", ["heading" => "Note", "note" => $note]);

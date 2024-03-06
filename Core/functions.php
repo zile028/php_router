@@ -62,3 +62,8 @@ function getUser($key)
 {
     return Session::get("user")[$key];
 }
+
+function base_uri($path = "/")
+{
+    echo "http://localhost/php_router" . $path;
+}
