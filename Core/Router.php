@@ -12,7 +12,7 @@ class Router
     {
 //      $this->routes = compact($method, $uri, $controller); // suprotno od exrtract, extract radi destrukciju
         $this->routes[] = [
-            "uri" => "/php_router" . $uri,
+            "uri" => $uri,
             "controller" => $controller,
             "method" => $method,
             "middleware" => null

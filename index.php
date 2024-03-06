@@ -1,12 +1,13 @@
 <?php
+if (session_status()) {
+    session_start();
+}
 
 use Core\Router;
 use Core\Session;
 use Core\ValidationException;
 
-if (session_status()) {
-    session_start();
-}
+
 const BASE_PATH = __DIR__ . "/";
 require(BASE_PATH . "vendor/autoload.php");
 require_once(BASE_PATH . "core/functions.php");

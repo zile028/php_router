@@ -65,5 +65,5 @@ function getUser($key)
 
 function base_uri($path = "/")
 {
-    echo "http://localhost/php_router" . $path;
+    echo $path;
 }

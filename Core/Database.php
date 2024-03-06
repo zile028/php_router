@@ -14,7 +14,7 @@ class Database
     {
         $dsn = "mysql:" . http_build_query($config, "", ";");
         try {
-            $this->pdo = new PDO($dsn, $username, $password, [
+            $this->pdo = new PDO($dsn, $config["username"], $config["password"], [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);
         } catch (PDOException $e) {
