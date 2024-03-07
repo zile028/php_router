@@ -21,14 +21,14 @@
 #RewriteCond %{REQUEST_FILENAME} -f
 #RewriteRule .* index.php [L]
 <IfModule mod_rewrite.c>
-#RewriteEngine On
-#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-#RewriteBase /
-#RewriteRule ^index\.php$ - [L]
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteRule . /index.php [L]
-#RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 </IfModule>
 # Route requests to index.php for further processing
 #RewriteBase /php_router/
